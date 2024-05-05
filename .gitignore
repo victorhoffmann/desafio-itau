@@ -1,0 +1,5 @@
+#Ignorando arquivos
+
+.vs
+bin/
+obj/
