@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Calculadora
 {
@@ -26,24 +27,28 @@ namespace Calculadora
                 resultados.Push(operacao.resultado);
                 Console.WriteLine("{0} {1} {2} = {3}", operacao.valorA,operacao.operador,operacao.valorB, operacao.resultado);
 
-                Console.WriteLine("{0} {1} {2} na fila: ", filaOperacoes.Count == 1 ? "Existe" : "Existem", filaOperacoes.Count, filaOperacoes.Count == 1 ? "operação" : "operações");
-                foreach (Operacoes op in filaOperacoes)
+                if (filaOperacoes.Count > 0)
                 {
-                    Console.WriteLine("Próxima operação: {0} {1} {2}", op.valorA, op.operador, op.valorB);
-                }
 
-                Console.WriteLine("\n");
+                    foreach (Operacoes op in filaOperacoes)
+                    {
+                        Console.WriteLine("Próxima operação: {0} {1} {2}", op.valorA, op.operador, op.valorB);
+                    }
+
+                    Console.WriteLine("\n");
+
+                } else
+                {
+                    Console.WriteLine("Não restam mais operações \n");
+                }
 
             }
 
-            Console.WriteLine("Imprimindo resultados das operações: ");
-
-            int index = resultados.Count;
+            Console.WriteLine("Imprimindo resultados das operações...");
 
             foreach (Object res in resultados)
             {
-                Console.WriteLine("Resultado da {0}° operação: {1}", index, res);
-                index--;
+                Console.WriteLine(res);
             }
 
         }
